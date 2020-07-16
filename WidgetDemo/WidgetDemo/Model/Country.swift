@@ -7,11 +7,6 @@
 
 import Foundation
 
-
-struct CountryList: Decodable {
-    var results: [Country]
-}
-
 struct Country: Decodable, Identifiable {
     var id = UUID()
     var name: String

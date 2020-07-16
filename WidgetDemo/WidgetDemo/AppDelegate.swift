@@ -9,9 +9,33 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    let networkManager = NetworkManager()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+//        let url = "http://api.icndb.com/jokes/random/10/"
+//
+//        networkManager.fetchData(url) { responseData in
+//            print("wgwG")
+//            guard let rawArray = responseData["value"] as? [[String: Any]] else {
+//                return
+//            }
+////
+//            let date = Date()
+//            let calendar = Calendar.current
+//
+//
+//            let entries = rawArray.enumerated().map { offset, currentJoke in
+//                print (currentJoke)
+//                JokesEntry(date: calendar.date(byAdding: .second, value: offset*2, to: date)!,
+//                           joke: currentJoke["joke"] as? String ?? "N.A.")
+//            }
+//
+//            let timeline = Timeline(entries: entries, policy: .after(refreshDate))
+//            completion(timeline)
+//        }
+
         return true
     }
 

@@ -25,9 +25,7 @@ struct ContentView: View {
 List(countries) { country in
     Button(action: {
         selectedCountryName = country.name
-        let userDefaults = UserDefaults(suiteName: "group.com.piyushchopra.widgetdemo")
-        userDefaults?.setValue(selectedCountryName, forKey: "selectedCountryName")
-        userDefaults?.synchronize()
+        WidgetDemoStore.shared.selectedCountryName = selectedCountryName
         WidgetCenter.shared.reloadAllTimelines()
     }) {
         HStack {
@@ -47,11 +45,9 @@ List(countries) { country in
     }
     
     func loadData() {
-        let userDefaults = UserDefaults(suiteName: "group.com.piyushchopra.widgetdemo")
-
-        selectedCountryName = userDefaults?.string(forKey: "selectedCountryName") ?? ""
+        selectedCountryName = WidgetDemoStore.shared.selectedCountryName
         isLoading = true
-        networkManager.loadDataByAlamofire("https://api.covid19api.com/countries") { responseData in
+        networkManager.fetchData("https://api.covid19api.com/countries") { responseData in
             
             guard let rawCountries = responseData["data"] as? [[String: Any]] else { return }
 

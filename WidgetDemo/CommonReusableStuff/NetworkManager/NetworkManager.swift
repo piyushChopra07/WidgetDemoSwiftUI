@@ -11,7 +11,7 @@ import Combine
 
 class NetworkManager: ObservableObject {
 
-    func loadDataByAlamofire(_ url: String, completion:@escaping (([String: Any]) -> Void)) {
+    func fetchData(_ url: String, completion:@escaping (([String: Any]) -> Void)) {
         Alamofire.request(url)
             .responseJSON{ response in
                 DispatchQueue.main.async {
